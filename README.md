@@ -13,12 +13,13 @@ import (
   "fmt"
   "github.com/pkmngo-odi/pogo/api"
   "github.com/pkmngo-odi/pogo/auth"
+  "encoding/json"
 )
 
 func main() {
 
   // Initialize a new authentication provider to retrieve an access token
-  provider, err := auth.NewProvider("ptc", "MyUser", "Pass1!!)")
+  provider, err := auth.NewProvider("ptc", "MyUser", "Pass1!!")
   if err != nil {
     fmt.Println(err)
     return
@@ -36,7 +37,7 @@ func main() {
   session.Init()
 
   // Start querying the API
-  player, err := client.GetPlayer()
+  player, err := session.GetPlayer()
   if err != nil {
     fmt.Println(err)
     return
@@ -49,7 +50,7 @@ func main() {
   }
 
   fmt.Println(string(out))
-  return nil
+  return
 
 }
 ```
